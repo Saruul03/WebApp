@@ -4,14 +4,16 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-	<definition name="layout" template="/WEB-INF/views/layout.jsp">
-		<put-attribute name="body" value=""></put-attribute>	
-	</definition>
-
-	<definition name="home" extends="layout">
-		<put-attribute name="ehbiy" value="/WEB-INF/views/home.jsp"></put-attribute>
+		
+	<definition name="adminLayout" template="/WEB-INF/views/admin/layout.jsp">	
 	</definition>
 	
-	<definition name="about" template="/WEB-INF/views/about.jsp"></definition>
+	<definition name="category-index" extends="adminLayout">
+		<put-attribute name="adminBody" value="/WEB-INF/views/admin/category/index.jsp"></put-attribute>
+	</definition>	
+	<definition name="category-list" template="/WEB-INF/views/admin/category/list.jsp"></definition>
+	<definition name="category-edit" template="/WEB-INF/views/admin/category/edit.jsp"></definition>
+	<definition name="category-new" template="/WEB-INF/views/admin/category/new.jsp"></definition>
+	
   
 </tiles-definitions>
