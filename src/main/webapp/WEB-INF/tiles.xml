@@ -11,7 +11,7 @@
 	<definition name="category-index" extends="adminLayout">
 		<put-attribute name="adminBody" value="/WEB-INF/views/admin/category/index.jsp"></put-attribute>
 	</definition>	
-	<definition name="category-list" template="/WEB-INF/views/admin/category/list.jsp"></definition>
+	<definition name="angilliinJagsaalt" template="/WEB-INF/views/admin/category/list.jsp"></definition>
 	<definition name="category-edit" template="/WEB-INF/views/admin/category/edit.jsp"></definition>
 	<definition name="category-new" template="/WEB-INF/views/admin/category/new.jsp"></definition>
 	

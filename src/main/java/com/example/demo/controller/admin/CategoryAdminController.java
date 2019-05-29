@@ -2,6 +2,7 @@ package com.example.demo.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CategoryAdminController {
@@ -13,11 +14,12 @@ public class CategoryAdminController {
 	
 	@RequestMapping("/admin/category/list")
 	public String list() {		
-		return "category-list";
+		return "angilliinJagsaalt";
 	}
 	
 	@RequestMapping("/admin/category/edit")
-	public String edit() {		
+	public String edit(@RequestParam Integer id) {		
+		System.out.println(id);
 		return "category-edit";
 	}
 	
