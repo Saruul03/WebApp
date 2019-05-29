@@ -1,8 +1,11 @@
 package com.example.demo.controller.admin;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CategoryAdminController {
@@ -12,7 +15,7 @@ public class CategoryAdminController {
 		return "category-index";
 	}
 	
-	@RequestMapping("/admin/category/list")
+	@GetMapping("/admin/category/list")
 	public String list() {		
 		return "angilliinJagsaalt";
 	}
@@ -31,6 +34,13 @@ public class CategoryAdminController {
 	@RequestMapping("/admin/category/sort")
 	public String sort() {		
 		return "category-sort";
+	}
+	
+	//@RequestMapping(name = "/admin/category/save", method = "POST")
+	@PostMapping("/admin/category/save")
+	@ResponseBody
+	public String saveForm() {		
+		return "category-save";
 	}
 
 }

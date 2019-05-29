@@ -9,26 +9,33 @@
 	<div id="list"></div>
 
 	<script>
-		$.ajax({
-			url : "/admin/category/list"
-		}).done(function(data) {
+	
+		/* $.ajax({url : "/admin/category/list"}).done(function(data) {
+			$('#list').html(data);
+		});
+ 		*/
+ 
+		$.get("/admin/category/list").done(function(data) {
 			$('#list').html(data);
 		});
 		
+		/* $.post("/admin/category/save").done(function(data) {
+			console.log(data);
+		});
+		 */
+		
 		function showNewForm(){
 			$('#exampleModal').modal('show');
-			$.ajax({
-				url : "/admin/category/new"
-			}).done(function(data) {
+			
+			$.ajax({url : "/admin/category/new"}).done(function(data) {
 				$('#modalNew').html(data);
 			});
 		}
 		
 		function showEditForm(id){
 			$('#exampleModal').modal('show');
-			$.ajax({
-				url : "/admin/category/edit?id=" + id
-			}).done(function(data) {
+			
+			$.ajax({url : "/admin/category/edit?id=" + id}).done(function(data) {
 				$('#modalNew').html(data);
 			});
 		}
