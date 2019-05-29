@@ -9,16 +9,31 @@
 		</button>
 	</div>
 	<div class="modal-body">
-		<form>
+		<form id="newForm">
 			<div class="form-group">
-				<label for="exampleInputEmail1">Нэр</label> 
-				<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ангиллын нэрээ оруулна уу..."> 
+				<label>Нэр</label> 
+				<input type="text" name="ner" class="form-control" placeholder="Нэр..."> 
 			</div>					
+			
+			<div class="form-group">
+				<label>Тайлбар</label> 
+				<input type="text" name="tailbar" class="form-control" placeholder="Тайлбар..."> 
+			</div>
+						
 		</form>
 
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-secondary" data-dismiss="modal">Болих</button>
-		<button type="button" class="btn btn-primary">Хадгалах</button>
+		<button type="button" class="btn btn-primary" onclick="sendForm()">Хадгалах</button>
 	</div>
 </div>
+
+<script>
+function sendForm() {
+	$.post('/admin/category/save', $('#newForm').serialize()).done(function(){
+		console.log('success');		
+	})
+}
+
+</script>
