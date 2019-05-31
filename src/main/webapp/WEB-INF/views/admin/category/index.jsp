@@ -14,10 +14,15 @@
 			$('#list').html(data);
 		});
  		*/
+ 		function loadList(){
+ 			$.get("/admin/category/list").done(function(data) {
+ 				$('#list').html(data);
+ 			});	
+ 		}
+ 		
+ 		loadList();
  
-		$.get("/admin/category/list").done(function(data) {
-			$('#list').html(data);
-		});
+		
 		
 		/* $.post("/admin/category/save").done(function(data) {
 			console.log(data);

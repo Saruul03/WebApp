@@ -1,24 +1,25 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <table class="table table-bordered">
 	<thead>
 		<tr>
+			<th>ID</th>
 			<th>Нэр</th>
+			<th>Тайлбар</th>
 			<th style="width: 1px"></th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>Улс төр</td>
-			<td><button class="btn btn-light" onclick="showEditForm(17)">Засах</button></td>
-		</tr>
-		<tr>
-			<td>Эдийн засаг</td>
-			<td><button class="btn btn-light" onclick="showEditForm(16)">Засах</button></td>
-		</tr>
-		<tr>
-			<td>Нийгэм</td>
-			<td><button class="btn btn-light" onclick="showEditForm(19)">Засах</button></td>
-		</tr>
+	
+		<c:forEach items="${angilluud}" var="angilal">			
+			<tr>
+				<td>${angilal.id}</td>
+				<td>${angilal.name}</td>
+				<td>${angilal.description}</td>
+				<td><button class="btn btn-light" onclick="showEditForm(${angilal.id})">Засах</button></td>
+			</tr>
+		</c:forEach>		
+		
 	</tbody>
 </table>

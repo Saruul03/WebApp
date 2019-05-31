@@ -32,7 +32,8 @@
 <script>
 function sendForm() {
 	$.post('/admin/category/save', $('#newForm').serialize()).done(function(){
-		console.log('success');		
+		$('#exampleModal').modal('hide');
+		loadList();			
 	})
 }
 
