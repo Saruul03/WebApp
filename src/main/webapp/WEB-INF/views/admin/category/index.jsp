@@ -44,6 +44,12 @@
 				$('#modalNew').html(data);
 			});
 		}
+		
+		function deleteCategory(id){
+			$.post('/admin/category/delete/'+id).done(function(){
+				loadList();			
+			});
+		}
 	</script>
 
 	<!-- Modal -->

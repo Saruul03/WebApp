@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,8 +34,16 @@ public class CategoryAdminController {
 	}
 	
 	@RequestMapping("/admin/category/edit")
-	public String edit(@RequestParam Integer id) {		
-		System.out.println(id);
+	public String edit(@RequestParam Integer id, Model model) {
+		Category category = repo.findById(id).get();
+		
+		CategoryForm form = new CategoryForm();
+		form.setId(category.getId());
+		form.setNer(category.getName());
+		form.setTailbar(category.getDescription());
+				
+		model.addAttribute("jspForm", form);
+				
 		return "category-edit";
 	}
 	
@@ -51,7 +60,7 @@ public class CategoryAdminController {
 	@PostMapping("/admin/category/save")
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void saveForm(CategoryForm form) {
+	public void save(CategoryForm form) {
 		Category category = new Category();
 		
 		category.setName(form.getNer());
@@ -60,4 +69,25 @@ public class CategoryAdminController {
 		repo.save(category);					
 	}
 
+	@PostMapping("/admin/category/update")
+	@ResponseBody
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void update(CategoryForm form) {
+		Category category = repo.findById(form.getId()).get();		
+				
+		category.setName(form.getNer());
+		category.setDescription(form.getTailbar());
+		
+		repo.save(category);					
+	}
+	
+	@PostMapping("/admin/category/delete/{id}")
+	@ResponseBody
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void deleteCategory(@PathVariable Integer id) {
+		Category category = repo.findById(id).get();								
+		repo.delete(category);
+	}
+
+	
 }
