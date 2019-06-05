@@ -15,5 +15,12 @@
 	<definition name="category-edit" template="/WEB-INF/views/admin/category/edit.jsp"></definition>
 	<definition name="category-new" template="/WEB-INF/views/admin/category/new.jsp"></definition>
 	
+	<definition name="blogIndex" extends="adminLayout">
+		<put-attribute name="adminBody" value="/WEB-INF/views/admin/blog/index.jsp"></put-attribute>
+	</definition>	
+	<definition name="blogList" template="/WEB-INF/views/admin/blog/list.jsp"></definition>
+	<definition name="blogEdit" template="/WEB-INF/views/admin/blog/edit.jsp"></definition>
+	<definition name="blogNew" template="/WEB-INF/views/admin/blog/edit.jsp"></definition>
+	
   
 </tiles-definitions>
