@@ -6,6 +6,7 @@
 		<tr>
 			<th>ID</th>
 			<th>Нэр</th>			
+			<th>Ангилал</th>
 			<th style="width: 1px"></th>
 			<th style="width: 1px"></th>
 		</tr>
@@ -15,7 +16,8 @@
 		<c:forEach items="${blogs}" var="blog">			
 			<tr>
 				<td>${blog.blogId}</td>
-				<td>${blog.name}</td>				
+				<td>${blog.name}</td>
+				<td>${blog.category.name}</td>				
 				<td><button class="btn btn-light" onclick="showEditForm(${blog.blogId})">Засах</button></td>
 				<td><button class="btn btn-danger" onclick="deleteCategory(${blog.blogId})">Устгах</button></td>
 			</tr>

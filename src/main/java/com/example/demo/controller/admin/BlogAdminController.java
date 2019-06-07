@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.example.demo.domain.Blog;
+import com.example.demo.domain.Category;
 import com.example.demo.model.BlogForm;
 import com.example.demo.repository.BlogRepository;
+import com.example.demo.repository.CategoryRepository;
 
 @Controller
 @RequestMapping("/admin/blog")
@@ -24,6 +25,9 @@ public class BlogAdminController {
 	
 	@Autowired
 	private BlogRepository repo;
+	
+	@Autowired
+	private CategoryRepository categoryRepo;
 	
 	@RequestMapping
 	public String index() {		
@@ -36,6 +40,12 @@ public class BlogAdminController {
 		return "blogList";
 	}
 	
+	
+	@GetMapping("/listJson")
+	public String list() {
+		return "temdegt";		
+	}
+	
 	@RequestMapping("/edit")
 	public String edit(@RequestParam Integer id, Model model) {
 		Blog blog = repo.findById(id).get();
@@ -44,8 +54,13 @@ public class BlogAdminController {
 		form.setId(blog.getBlogId());
 		form.setName(blog.getName());
 		form.setContent(blog.getContent());
+		if (blog.getCategory()!=null) {
+			form.setCategoryId(blog.getCategory().getId());	
+		}				
 				
 		model.addAttribute("jspForm", form);
+		
+		model.addAttribute("categories", categoryRepo.findAll());
 				
 		return "blogEdit";
 	}
@@ -53,11 +68,13 @@ public class BlogAdminController {
 	@RequestMapping("/new")
 	public String newForm(Model model) {	
 		model.addAttribute("jspForm", new BlogForm());
+		
+		model.addAttribute("categories", categoryRepo.findAll());
+		
 		return "blogNew";
 	}
 		
-	@PostMapping("/save")
-	@ResponseBody
+	@PostMapping("/save")	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void save(BlogForm form) {
 		
@@ -73,12 +90,18 @@ public class BlogAdminController {
 					
 		blog.setName(form.getName());
 		blog.setContent(form.getContent());
+		
+		Category category = null;
+		if (form.getCategoryId()!=null && form.getCategoryId()!=0) {
+			category = categoryRepo.findById(form.getCategoryId()).get();
+		}
+		
+		blog.setCategory(category);
 				
 		repo.save(blog);					
 	}
 	
-	@PostMapping("/delete/{id}")
-	@ResponseBody
+	@PostMapping("/delete/{id}")	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteCategory(@PathVariable Integer id) {
 		Blog blog = repo.findById(id).get();								

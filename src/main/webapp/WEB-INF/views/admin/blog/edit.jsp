@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="modal-content">
 	<div class="modal-header">
@@ -17,6 +18,16 @@
 			<div class="form-group">
 				<label for="ner">Нэр</label>
 				<form:input path="name" class="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<label for="ner">Ангилал</label>
+				<form:select path="categoryId" class="form-control">
+					<form:option value="0">...</form:option>
+					<c:forEach items="${categories}" var="cat">
+						<form:option value="${cat.id}">${cat.name}</form:option>
+					</c:forEach>					
+				</form:select>
 			</div>
 
 			<div class="form-group">

@@ -22,5 +22,11 @@
 	<definition name="blogEdit" template="/WEB-INF/views/admin/blog/edit.jsp"></definition>
 	<definition name="blogNew" template="/WEB-INF/views/admin/blog/edit.jsp"></definition>
 	
+	<!--  -->
+	
+	<definition name="index" template="/WEB-INF/views/web/index.jsp"></definition>
+	<definition name="blog" template="/WEB-INF/views/web/blog.jsp"></definition>
+	
+	
   
 </tiles-definitions>
