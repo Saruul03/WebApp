@@ -36,8 +36,13 @@ public class BlogAdminController {
 	}
 	
 	@GetMapping("/list")
-	public String list(Model model, Pageable pageable) {
-		model.addAttribute("blogs", repo.findAll(pageable));		
+	public String list(Model model, @RequestParam(required = false) String q, Pageable pageable) {
+		if (q==null) {
+			model.addAttribute("blogs", repo.findAll(pageable));
+		}
+		else {
+			model.addAttribute("blogs", repo.findByName(q, pageable));	
+		}				
 		return "blogList";
 	}
 	
