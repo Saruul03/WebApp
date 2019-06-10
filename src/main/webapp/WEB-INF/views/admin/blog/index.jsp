@@ -10,8 +10,11 @@
 
 	<script>
 			
- 		function loadList(){
- 			$.get("/admin/blog/list").done(function(data) {
+ 		function loadList(huudas){
+ 			if (huudas===undefined){
+ 				huudas = 0;
+ 			} 			
+ 			$.get("/admin/blog/list?page="+huudas+"&size=2").done(function(data) {
  				$('#list').html(data);
  			});	
  		}

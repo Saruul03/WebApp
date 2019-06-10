@@ -3,6 +3,7 @@ package com.example.demo.controller.admin;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,8 +36,8 @@ public class BlogAdminController {
 	}
 	
 	@GetMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("blogs", repo.findAll());		
+	public String list(Model model, Pageable pageable) {
+		model.addAttribute("blogs", repo.findAll(pageable));		
 		return "blogList";
 	}
 	

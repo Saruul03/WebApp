@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@include file="/WEB-INF/views/include.jsp"%>
 
 <table class="table table-bordered">
 	<thead>
@@ -13,7 +13,7 @@
 	</thead>
 	<tbody>
 	
-		<c:forEach items="${blogs}" var="blog">			
+		<c:forEach items="${blogs.content}" var="blog">			
 			<tr>
 				<td>${blog.blogId}</td>
 				<td>${blog.name}</td>
@@ -25,3 +25,23 @@
 		
 	</tbody>
 </table>
+
+
+<c:if test="${blogs.totalPages gt 1}">
+	<nav aria-label="Page navigation example">
+	  <ul class="pagination">
+	  	<c:if test="${not blogs.first}">
+	  		<li class="page-item"><a class="page-link" href="#" onclick="loadList(${blogs.number-1});">Өмнөх</a></li>
+	  	</c:if>
+	  	
+	  	<c:forEach var="i" begin="1" end="${blogs.totalPages}">
+	  		<li class="page-item <c:if test="${blogs.number == i-1}">active</c:if>"><a class="page-link" href="#" onclick="loadList(${i-1});">${i}</a></li>
+	  	</c:forEach>  	       
+	    
+	    <c:if test="${not blogs.last}">
+	    	<li class="page-item"><a class="page-link" href="#" onclick="loadList(${blogs.number+1});">Дараах</a></li>
+	    </c:if>   
+	  </ul>
+	</nav>
+</c:if>
+
