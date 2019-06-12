@@ -1,9 +1,16 @@
 package com.example.demo.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class CategoryForm {
 	
 	private Integer id;
+	
+	@NotBlank(message = "Хоосон байж болохгүй")
+	@Size(min=2, max=30, message = "Зөв урттайг оруулна уу")
 	private String ner;
+	
 	private String tailbar;
 	
 	public Integer getId() {

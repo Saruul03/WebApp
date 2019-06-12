@@ -16,7 +16,8 @@
 		
 			<div class="form-group">
 				<label for="ner">Нэр</label>
-				<form:input path="ner" class="form-control" />
+				<form:input path="ner" class="form-control" cssErrorClass="form-control is-invalid" />
+				<form:errors path="ner" class="invalid-feedback" element="div"/>
 			</div>
 
 			<div class="form-group">
@@ -34,9 +35,8 @@
 
 <script>	
 	function sendForm() {
-		$.post('/admin/category/update', $('#jspForm').serialize()).done(function(){
-			$('#exampleModal').modal('hide');
-			loadList();			
+		$.post('/admin/category/update', $('#jspForm').serialize()).done(function(data){
+			$('#modalNew').html(data);					
 		})
 	}
 </script>

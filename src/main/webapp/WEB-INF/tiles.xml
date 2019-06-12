@@ -13,7 +13,9 @@
 	</definition>	
 	<definition name="angilliinJagsaalt" template="/WEB-INF/views/admin/category/list.jsp"></definition>
 	<definition name="category-edit" template="/WEB-INF/views/admin/category/edit.jsp"></definition>
+	<definition name="category-edit-success" template="/WEB-INF/views/admin/category/editSuccess.jsp"></definition>
 	<definition name="category-new" template="/WEB-INF/views/admin/category/new.jsp"></definition>
+	
 	
 	<definition name="blogIndex" extends="adminLayout">
 		<put-attribute name="adminBody" value="/WEB-INF/views/admin/blog/index.jsp"></put-attribute>

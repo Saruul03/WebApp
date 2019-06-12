@@ -12,7 +12,8 @@
 		<form id="newForm">
 			<div class="form-group">
 				<label>Нэр</label> 
-				<input type="text" name="ner" class="form-control" placeholder="Нэр..."> 
+				<input type="text" name="ner" class="form-control" placeholder="Нэр...">
+				<span></span> 
 			</div>					
 			
 			<div class="form-group">
@@ -32,8 +33,10 @@
 <script>
 function sendForm() {
 	$.post('/admin/category/save', $('#newForm').serialize()).done(function(){
-		$('#exampleModal').modal('hide');
-		loadList();			
+		
+		/* $('#exampleModal').modal('hide');
+		loadList(); */
+		
 	})
 }
 
