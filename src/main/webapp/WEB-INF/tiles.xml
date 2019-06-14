@@ -24,6 +24,14 @@
 	<definition name="blogEdit" template="/WEB-INF/views/admin/blog/edit.jsp"></definition>
 	<definition name="blogNew" template="/WEB-INF/views/admin/blog/edit.jsp"></definition>
 	
+	<definition name="admin-user" extends="adminLayout">
+		<put-attribute name="adminBody" value="/WEB-INF/views/admin/user/index.jsp"></put-attribute>
+	</definition>
+	<definition name="admin-user-list" template="/WEB-INF/views/admin/user/list.jsp"></definition>
+	<definition name="admin-user-new" template="/WEB-INF/views/admin/user/new.jsp"></definition>	
+	
+	<definition name="login" template="/WEB-INF/views/admin/login.jsp"></definition>
+	
 	<!--  -->
 	
 	<definition name="index" template="/WEB-INF/views/web/index.jsp"></definition>
