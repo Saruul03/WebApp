@@ -14,8 +14,8 @@
 		<c:forEach items="${list}" var="user">			
 			<tr>			
 				<td>${user.username}</td>				
-				<td><button class="btn btn-light" onclick="showEditForm(${angilal.id})">Засах</button></td>
-				<td><button class="btn btn-danger" onclick="deleteCategory(${angilal.id})">Устгах</button></td>
+				<td><button class="btn btn-light" onclick="showEditForm('${user.username}')">Засах</button></td>
+				<td><button class="btn btn-danger" onclick="deleteCategory('admin')">Устгах</button></td>
 			</tr>
 		</c:forEach>		
 		

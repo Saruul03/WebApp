@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-public class UserForm {
+public class UserNewForm {
 	
 	private String username;
 	private String password;

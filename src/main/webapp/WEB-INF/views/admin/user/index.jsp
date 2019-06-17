@@ -26,10 +26,10 @@
 			});
 		}
 		
-		function showEditForm(id){
+		function showEditForm(username){
 			$('#exampleModal').modal('show');
 			
-			$.ajax({url : "/admin/user/edit?id=" + id}).done(function(data) {
+			$.ajax({url : "/admin/user/"+username+"/edit"}).done(function(data) {
 				$('#modalNew').html(data);
 			});
 		}
