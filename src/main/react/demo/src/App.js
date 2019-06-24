@@ -21,25 +21,25 @@ function App() {
 
       <Example ovogNer="Sarnai----"/>
 
-      <Example1 ovogNer="Erdene" />
-
       <Example/>
     </div>
   );
 }
 
+const h1Style = {
+  fontSize: '16px',
+  color: 'green'
+}
+
 function Example({ovogNer}) {
   return (
-    <h1>Example, {ovogNer}</h1>
+    <h1 style={h1Style}>Example, {ovogNer}</h1>
   );
 }
 
-function Example1(a) {
+function Example1({ovogNer}) {
   return (
-    <h1>
-      Example, {a.ovogNer}
-      <Example/>
-    </h1>
+    <h1 style={{fontSize: 18}}>Example, {ovogNer}</h1>
   );
 }
 
