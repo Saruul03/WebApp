@@ -18,13 +18,7 @@ import com.example.demo.repository.MenuRepository;
 @RequestMapping("api/menu")
 public class MenuApiController {
 	
-	@Autowired
-	private MenuRepository repo;
-	@GetMapping("/list")
-	public Iterable<Menu> list() {
-		return repo.findAll();
-	}
-	
+	//Шинэ ангилал хадгалах
 	@PostMapping("/save")
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
@@ -39,24 +33,46 @@ public class MenuApiController {
 		repo.save(menu);
 	}
 	
+	
+	
+	@Autowired
+	private MenuRepository repo;
+	@GetMapping("/list")
+	public Iterable<Menu> list() {
+		return repo.findAll();
+	}
+		
+	
+	//Хуучин ангилал засах
 	@PostMapping("/update")	
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void update(MenuForm form) {
-		
-		
-		
-		Menu menu = repo.findById(form.getId()).get();		
-				
+	public void update1(MenuForm form) {
+		Menu menu = repo.findById(form.getId()).get();				
 		menu.setName(form.getName());
 		menu.setLink(form.getLink());
 		menu.setOrdering(form.getOrdering());
 		menu.setTarget(form.getTarget());		
 		
-		repo.save(menu);
-		
+		repo.save(menu);		
 	}
 	
+	{}
+	
+	//Ангилал унших
+	@GetMapping("/api/category/read/{id}")
+	@ResponseBody
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void update(MenuForm form) {
+		Menu menu = repo.findById(form.getId()).get();				
+		menu.setName(form.getName());
+		menu.setLink(form.getLink());
+		menu.setOrdering(form.getOrdering());
+		menu.setTarget(form.getTarget());		
+	
+	}
+	
+	//Ангилал устгах
 	@PostMapping("/delete/{id}")
 	@ResponseBody
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
